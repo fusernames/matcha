@@ -9,8 +9,8 @@ router
   res.render('user/login');
 })
 .post('/login', function(req, res) {
-  //validator(req.body.username).string().min(2).max(15);
-  validator.check(req.body.username).isString().min(2).max(15);
+  var errors = validator(req.body.username, 'Nom d\'utilisateur').isString().min(2).max(10).getErrors();
+  console.log(errors);
   res.redirect('/login');
 })
 // Register

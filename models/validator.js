@@ -1,22 +1,30 @@
-module.exports = {
+validator = function (data, type) {
 
-  check : function(init) {
-    this.data = init;
-    return this;
-  },
+  let errors = [];
 
-  isString : function() {
-    if (typeof this.data === 'string')
-      return this;
-  },
-
-  min : function(min) {
-    if (this.data.lenght >= min)
-      return this;
-  },
-
-  max : function(max) {
-    if (this.data.lenght <= max)
-      return this;
+  this.getErrors = function() {
+    return errors;
   }
+
+  this.isString = function() {
+    if (typeof data !== 'string')
+      errors.push('string');
+    return this;
+  }
+
+  this.min = function(n) {
+    if (data.length < n)
+      errors.push('Votre '+ type +' est trop court.');
+    return this;
+  }
+
+  this.max = function(n) {
+    if (data.length > n)
+      errors.push('max');
+    return this;
+  }
+
+  return this;
 }
+
+module.exports = validator;
