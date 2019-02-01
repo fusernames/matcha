@@ -2,7 +2,7 @@
 <head>
   <meta charset="utf-8">
   <!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="public/css/materialize.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!-- Compiled and minified JavaScript -->
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -20,15 +20,18 @@
         <% if (locals.currentUser) { %>
         <li><a href="/logout">Logout</a></li>
         <% } else { %>
+        <li><a href="/register">Register</a></li>
         <li><a href="/login">Login</a></li>
         <% } %>
       </ul>
     </div>
   </nav>
   <ul class="sidenav" id="mobile-demo">
-    <li><a href="sass.html">Sass</a></li>
-    <li><a href="badges.html">Components</a></li>
-    <li><a href="collapsible.html">Javascript</a></li>
-    <li><a href="mobile.html">Mobile</a></li>
+    <% if (locals.currentUser) { %>
+    <li><a href="/logout">Logout</a></li>
+    <% } else { %>
+    <li><a href="/register">Register</a></li>
+    <li><a href="/login">Login</a></li>
+    <% } %>
   </ul>
   <div class="container">

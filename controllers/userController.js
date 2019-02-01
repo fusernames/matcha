@@ -1,8 +1,10 @@
-const express = require('express');
-const router = express.Router();
+var userController = {
+  login : function(req, res) {
+    if (req.method == 'POST') {
+      console.log('test');
+    }
+    res.render('user/login');
+  }
+}
 
-router.get('/login', function(req, res) {
-  res.render('login');
-});
-
-module.exports = router;
+module.exports = userController;

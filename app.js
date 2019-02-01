@@ -1,16 +1,16 @@
+global.__basedir = __dirname;
 const express = require('express');
 const app = express();
-const userController = require('./controllers/userController');
+const userRouter = require('./routers/userRouter');
+const bodyParser = require("body-parser")
 
 app.set('view engine', 'ejs');
-
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use('/public', express.static('public'));
-app.use(userController);
+app.use(userRouter);
 
 app.get('/', function(req, res) {
   res.render('index');
 });
-
-app.locals.user = 'cc';
-
 app.listen(3000);
